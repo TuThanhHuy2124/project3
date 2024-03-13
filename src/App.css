@@ -78,7 +78,7 @@ span {
 
 input {
     font-family: 'Courier New', Courier, monospace;
-    background-color: rgb(211, 193, 195, 0.8);
+    background-color: rgba(160, 235, 228, 0.8);
     border-radius: 5px;
 }
 

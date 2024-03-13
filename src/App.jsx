@@ -43,27 +43,32 @@ var cardStack = [
   ["Pencil Sharpener", "Đồ chuốt", ["Đồ chuốt", "Do chuot"]],
   ["Ruler", "Thước", ["Thước", "Thuoc"]]
 ]
+var currentIndex = 0;
 
 function App() {
   const [card, setCard] = useState(0)
   const [face, setFace] = useState(0)
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [borderColor, setBorderColor] = useState("gray")
   const [currentStreak, setCurrentStreak] = useState(0)
   const [longestStreak, setLongestStreak] = useState(0)
 
+  const resetInput = () => {
+    document.getElementById("textEnter").value = "";
+  }
+
   const nextCard = () => {
     if(currentIndex < cardStack.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      currentIndex++
       setCard(currentIndex);
       setFace(0);
       setBorderColor("gray");
     }
+    resetInput();
   };
 
   const prevCard = () => {
     if(currentIndex !== 0) {
-      setCurrentIndex(currentIndex - 1);
+      currentIndex--;
       setCard(currentIndex);
       setFace(0);
       setBorderColor("gray");
@@ -72,8 +77,6 @@ function App() {
 
   const flip = () => {
     setFace((face + 1) % 2);
-    setBorderColor("gray");
-    resetStreak();
   };
   
   const shuffle = () => {
@@ -81,16 +84,13 @@ function App() {
       const j = Math.floor(Math.random() * (i + 1)); 
       [cardStack[i], cardStack[j]] = [cardStack[j], cardStack[i]]; 
     }
-    setCurrentIndex(0);
+    currentIndex = 0;
     setCard(currentIndex);
     setFace(0); 
   }
   
   const answerMatched = (answer) => {
-    console.log(cardStack[card][2])
     for(let i = 0; i < cardStack[card][2].length; i++) {
-      console.log(answer);
-      console.log(cardStack[card][2][i]);
       if(answer.toLowerCase() === cardStack[card][2][i].toLowerCase()) {return true;}
     }
     return false;
@@ -102,12 +102,13 @@ function App() {
   }
 
   const handleInput = (e) => {
-    console.log(e)
     e.preventDefault();
     if(face === 0) {
       if(answerMatched(e.target[0].value)) {
-        setBorderColor("green");
-        setCurrentStreak(currentStreak + 1);
+        if(borderColor !== "green") {
+          setBorderColor("green");
+          setCurrentStreak(currentStreak + 1);
+        }
       } 
       else {
         setBorderColor("red");
@@ -133,8 +134,10 @@ function App() {
           <form onSubmit={handleInput}>
               <label htmlFor='guess'>Enter your guess here:</label>
               <input  
+                readOnly={face || borderColor !== "gray"}
                 type="text" 
                 name="guess" 
+                id="textEnter"
                 className={borderColor} 
                 placeholder="Your answer..."
               />
