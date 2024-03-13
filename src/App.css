@@ -1,0 +1,88 @@
+.display {
+    /* user-select: none; <-- comment out so people can copy and paste Vietnamese answers*/ 
+    border-radius: 20px;
+    margin-bottom: 3vh;
+    padding: 10px;
+    width: 70vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    color: green;
+    background-color: rgba(160, 235, 228, 0.8);
+    border: 5px solid grey
+}
+
+.display:hover {
+    cursor: pointer;
+}
+
+.info {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.nextContainer > button {
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 2em;
+}
+
+button:hover {
+    background-color: rgb(211, 211, 211, 0.8);
+}
+
+h1, h2, h3 {
+    color: green;
+    background-color: rgb(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+h2 {
+    max-width: 80%;
+}
+
+.gray {
+    border-color: gray;
+}
+
+.green {
+    border-color: green;
+}
+
+.red {
+    border-color: red;
+}
+
+form {
+    background-color: rgb(255, 255, 255, 0.8);
+    color: green;
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 5px;
+}
+
+span {
+    color: red;
+}
+
+input {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(211, 193, 195, 0.8);
+    border-radius: 5px;
+}
+
+form button {
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+}

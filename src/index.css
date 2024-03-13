@@ -1,0 +1,18 @@
+#root {
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  margin: 3vh 10vw 0px 10vw;
+  padding-bottom: 3vh;
+  align-items: center;
+  background-image: url("public/vietnam.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  background-color: #D1FFC6;
+}
