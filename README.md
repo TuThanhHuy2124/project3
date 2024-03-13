@@ -26,6 +26,7 @@ The following **additional** features are implemented:
 
 - [x] A user may only answer a card once per stop
 - [x] A user may not change the answer after submitted at each stop
+- [x] A user may not answer after flipping the card at each stop
 - [x] Change favicon
 - [x] Change title
 
@@ -44,7 +45,7 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I tried to reuse my code from project 2 but it ended up wasted 1.5 hours for me.
 
 ## License
 

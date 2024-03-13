@@ -48,6 +48,7 @@ var currentIndex = 0;
 function App() {
   const [card, setCard] = useState(0)
   const [face, setFace] = useState(0)
+  const [flipped, setFlipped] = useState(0);
   const [borderColor, setBorderColor] = useState("gray")
   const [currentStreak, setCurrentStreak] = useState(0)
   const [longestStreak, setLongestStreak] = useState(0)
@@ -61,9 +62,11 @@ function App() {
       currentIndex++
       setCard(currentIndex);
       setFace(0);
+      setFlipped(0);
       setBorderColor("gray");
+      resetInput();
     }
-    resetInput();
+    
   };
 
   const prevCard = () => {
@@ -71,12 +74,15 @@ function App() {
       currentIndex--;
       setCard(currentIndex);
       setFace(0);
+      setFlipped(0);
       setBorderColor("gray");
+      resetInput();
     }
   }
 
   const flip = () => {
     setFace((face + 1) % 2);
+    setFlipped(1);
   };
   
   const shuffle = () => {
@@ -123,7 +129,7 @@ function App() {
       <h1>THE VIETNAMESE CARD SET</h1>
       <h2>Learn Vietnamese through flashcards!<br>
       </br>Topics include: Pronoun, Calendar, and School<br>
-      </br><span>Answers without tone marks are still correct!</span></h2>
+      </br><span>Answers with or without tone marks are both correct!</span></h2>
       <div className='info'>
         <h3>Number of cards: {cardStack.length}</h3>
         <h3>Current streak: {currentStreak}</h3>
@@ -134,7 +140,7 @@ function App() {
           <form onSubmit={handleInput}>
               <label htmlFor='guess'>Enter your guess here:</label>
               <input  
-                readOnly={face || borderColor !== "gray"}
+                readOnly={flipped || face || borderColor !== "gray"}
                 type="text" 
                 name="guess" 
                 id="textEnter"
